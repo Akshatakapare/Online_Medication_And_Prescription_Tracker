@@ -6,4 +6,5 @@ Team Members:
 - Priyansh Patel
 - Khushi Sharma
 - Shreya
+- Eswari Putti
 
