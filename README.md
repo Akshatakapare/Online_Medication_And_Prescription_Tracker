@@ -8,120 +8,266 @@ Team Members:
 
 # 💊 Prescripto - Online Medication & Prescription Tracker
 
-A comprehensive web-based application for managing prescriptions and medication schedules efficiently.
+A full-stack web application to manage prescriptions and track medication schedules digitally.
 
-**Developed as part of Infosys Springboard Internship Program**
-
----
-
-## 📖 About The Project
-
-Patients currently manage prescriptions and medicines using paper records and memory, which often leads to loss of prescriptions, missed doses, and medication errors. **Prescripto** solves this by providing a centralized digital platform for managing prescriptions and medication schedules efficiently.
+Developed as part of the Infosys Springboard Internship Program.
 
 ---
 
-## ✨ Features
+# 📖 About The Project
 
-### For Patients
-- View digital prescriptions
-- Track daily medicine schedule (Morning/Evening/Night)
-- Mark doses as Taken or Missed
-- View health report with adherence statistics
-- Book appointments with doctors
+Patients often rely on paper prescriptions and memory, which can lead to:
 
-### For Doctors
-- Create digital prescriptions with medicine dropdown
-- View all patients list
-- Track patient medication adherence
-- Manage appointments
+* Lost prescriptions
+* Missed doses
+* Incorrect medication usage
 
-### For Caregivers
-- View linked patient's details
-- Monitor patient's daily medicine status
-- View patient's prescriptions
-
-### For Admin
-- View all users (Patients, Doctors, Caregivers)
-- View user details
-- Delete users
-- Dashboard with system statistics
-
-### Automated Features
-- Auto-mark missed doses using Cron scheduler
-- Reminder alerts for pending medicines
+**Prescripto** solves this problem by providing a centralized digital platform where patients, doctors, caregivers, and admins can efficiently manage prescriptions and medication schedules.
 
 ---
 
-## 🛠️ Tech Stack
+# ✨ Features
 
-| Layer | Technology |
-|-------|------------|
-| **Backend** | Java 21, Spring Boot 4.0.2, Spring Security, Spring Data JPA |
-| **Frontend** | React 18, Vite, React Router, Axios, Tailwind CSS |
-| **Database** | MySQL 8.0 |
-| **Authentication** | JWT (JSON Web Token) |
+## 👤 Patient
+
+* View digital prescriptions
+* Track daily medicine schedule (Morning / Evening / Night)
+* Mark doses as Taken or Missed
+* View adherence report (health stats)
+* Book appointments with doctors
+
+## 👨‍⚕️ Doctor
+
+* Create prescriptions using medicine dropdown
+* View patient list
+* Track patient adherence
+* Manage appointments
+
+## 👨‍👩‍👧 Caregiver
+
+* Monitor patient's medicines
+* View prescriptions
+* Track daily status
+
+## 🛡️ Admin
+
+* View all users
+* Delete users
+* Dashboard with system statistics
+
+## ⚙️ Automated Features
+
+* Auto-mark missed doses using Cron Job
+* Reminder alerts for pending medicines
 
 ---
 
-## 🚀 Setup Instructions
+# 🛠️ Tech Stack
 
-### Prerequisites
-- Java 21
-- Node.js 18+
-- MySQL 8.0
-- Maven
+| Layer          | Technology                                             |
+| -------------- | ------------------------------------------------------ |
+| Backend        | Java 21, Spring Boot, Spring Security, Spring Data JPA |
+| Frontend       | React (Vite), Tailwind CSS, Axios                      |
+| Database       | MySQL 8                                                |
+| Authentication | JWT (JSON Web Token)                                   |
 
-### Step 1: Clone Repository
-```bash
-git clone https://github.com/yourusername/prescripto.git
-cd prescripto
+---
 
-### Step 2: Database Setup
-SQL
+# 📁 Project Structure
 
+```
+frontend/
+└── src/
+    ├── components/
+    ├── pages/
+    ├── App.jsx
+    ├── main.jsx
+    ├── index.css
+    ├── api.js
+    
+
+
+
+backend/
+└── src/main/java/com/prescripto/
+    ├── controller/
+    ├── service/
+    ├── repository/
+    ├── entity/
+    ├── scheduler/
+    ├── security/
+    
+```
+
+---
+
+# 🚀 Setup Instructions
+
+## ✅ Prerequisites
+
+Make sure you have installed:
+
+* Java 21
+* Node.js (18+)
+* MySQL 8
+* Maven
+
+---
+
+# 🗄️ Step 1: Database Setup
+
+Open MySQL and run:
+
+```sql
 CREATE DATABASE prescripto_db_main;
+```
 
-### Step 3: Backend Setup
+---
 
-Bash
+# ⚙️ Step 2: Backend Setup
 
+```bash
 cd backend
+```
 
+### Update application.properties
 
-Update src/main/resources/application.properties:
-
-properties
-
+```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/prescripto_db_main
 spring.datasource.username=root
 spring.datasource.password=YOUR_PASSWORD
+
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+
 jwt.secret=prescripto_jwt_secret_key_2024_secure
 jwt.expiration=86400000
+
 server.port=8080
-Run backend:
 
-Bash
+# =============================================
+# GEMINI AI API KEY (Add this line)
+# =============================================
+gemini.api.key= YOUR GEMINI API KEY
+```
 
+### Run Backend
+
+```bash
 ./mvnw spring-boot:run
-Backend runs on: http://localhost:8080
+```
 
-### Step 4: Frontend Setup
-Bash
+👉 Backend runs on: http://localhost:8080
 
+---
+
+# 🎨 Step 3: Frontend Setup
+
+```bash
 cd frontend
+```
+
+## Install dependencies
+
+```bash
 npm install
+npm i react-router-dom
+npm i axios
+npm install tailwindcss @tailwindcss/vite
+```
+
+---
+
+## 🔥 If project is not created yet (Vite + Tailwind setup)
+
+```bash
+npm create vite@latest
+cd your-project-name
+npm install
+npm i react-router-dom
+npm i axios
+npm install tailwindcss @tailwindcss/vite
+```
+
+
+
+---
+
+## ▶️ Run Frontend
+
+```bash
 npm run dev
-Frontend runs on: http://localhost:5173
+```
 
-🔐 Login Credentials
-Admin (Hardcoded)
-Field	Value
-Email	admin@prescripto.com
-Password	admin123
+👉 Frontend runs on: http://localhost:5173
 
+---
 
-### Other Users
+# 🔐 API Configuration (IMPORTANT)
 
-Register through the application as Patient, Doctor, or Caregiver.
+If your project uses AI or external APIs (like Gemini):
+
+👉 Create `.env` file inside frontend:
+
+```
+VITE_API_BASE_URL=http://localhost:8080
+VITE_AI_API_KEY=your_api_key_here
+```
+
+⚠️ Note:
+
+* `.env` file GitHub pe push nahi hota
+* Node modules bhi push nahi hote (use npm install)
+
+---
+
+# 🔑 Login Credentials
+
+## Admin (Default)
+
+| Field    | Value                                               |
+| -------- | --------------------------------------------------- |
+| Email    | [admin@prescripto.com] |
+| Password | admin123                                            |
+
+---
+
+## Other Users
+
+👉 Register as:
+
+* Patient
+* Doctor
+* Caregiver
+
+---
+
+# 🧠 How It Works (Simple Flow)
+
+1. User registers & logs in (JWT authentication)
+2. Doctor creates prescription
+3. Patient gets medicine schedule
+4. Patient marks doses
+5. System tracks adherence
+6. Cron job marks missed doses automatically
+
+---
+
+# 📌 Important Notes
+
+* Backend follows MVC Architecture (Controller → Service → Repository)
+* Passwords are encrypted using BCrypt
+* JWT is used for secure authentication
+* Database is auto-managed using JPA (ddl-auto=update)
+
+---
+
+# 📜 License
+
+This project is licensed under MIT License.
+
+---
+
+# 👨‍💻 Author
+
+Developed during Infosys Springboard Internship Program.
